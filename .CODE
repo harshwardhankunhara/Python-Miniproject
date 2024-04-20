@@ -1,7 +1,26 @@
-# Code Implementation:
-First, take the length of the password as input. Then we can display a prompt about the possible list of characters that a user wants to include in the password –
-For including letters in the character set append string.ascii_letters in the character list.
-For including letters in the character set append string.digits in the character list.
-For including letters in character set append string.punctuation in the character list.
-Run a for loop till the length of the password and in each iteration choose a random character using random.choice() from characterList. Finally, print the password.
-
+import string
+import random
+length = int(input("Enter password length: "))
+print('''Choose character set for password from these : 
+		1. Digits
+		2. Letters
+		3. Special characters
+		4. Exit''')
+characterList = ""
+while(True):
+	choice = int(input("Pick a number "))
+	if(choice == 1):
+		characterList += string.ascii_letters
+	elif(choice == 2):
+		characterList += string.digits
+	elif(choice == 3):
+		characterList += string.punctuation
+	elif(choice == 4):
+		break
+	else:
+		print("Please pick a valid option!")
+password = []
+for i in range(length):
+	randomchar = random.choice(characterList)
+	password.append(randomchar)
+print("The random password is " + "".join(password))
